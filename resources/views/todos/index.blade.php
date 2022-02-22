@@ -1,5 +1,11 @@
 
 @extends('layouts.app')
+
+@section('title')
+ 
+Todos List
+
+@endsection
   
 @section('content')
 
@@ -20,8 +26,20 @@
             <li class='list-group-item'>
             
             {{$todo->name}}
-            
-            <a href="/todos/{{$todo->id}}" class="btn btn-primary btn-sm float-end">View</a>
+
+            @if($todo->completed)
+
+            <a href="/todos/{{$todo->id}}/complete" style="color:white" class="btn btn-success  btn-sm float-end">Completed</a>
+
+            @else
+
+            <a href="/todos/{{$todo->id}}/complete" style="color:white" class="btn btn-warning  btn-sm float-end">Pending</a>
+
+            @endif
+
+           
+                   
+            <a href="/todos/{{$todo->id}}" class="btn btn-primary btn-sm float-end mx-2">View</a>
 
             </li>
            
